@@ -1,6 +1,6 @@
 rest api:
 
-get student: GET /student/{id}
+get student: GET /student?id={id}
 
 delete student: DELETE /student request body: json {
     id: xx,
