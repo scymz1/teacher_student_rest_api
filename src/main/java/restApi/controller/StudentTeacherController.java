@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
+import restApi.exception.ResourceNotFoundException;
 import restApi.pojo.entity.Student;
 import restApi.repository.TeacherStudentRepo;
 
@@ -46,4 +47,10 @@ public class StudentTeacherController {
     public ResponseEntity<String> updateEmp(@RequestBody Student student) {
         return new ResponseEntity<>(repo.UpdateStudent(student.getId(), student.getName()), HttpStatus.OK);
     }
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<?> handleException() {
+        return new ResponseEntity<>("xxx not found", HttpStatus.NOT_FOUND);
+    }
+
 }
