@@ -24,7 +24,7 @@ public class StudentTeacherController {
         this.repo = teacherStudentRepo;
     }
 
-    @GetMapping("/student/{id}")
+    @GetMapping("/student?id={id}")
     public ResponseEntity<Student> getStudentById(@PathVariable String id) {
         return new ResponseEntity<>(repo.findById(id), HttpStatus.OK);
     }
